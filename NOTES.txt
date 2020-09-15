@@ -1,0 +1,75 @@
+"Recipe_AILimiter_C": {
+			"slug": "a-i-limiter",
+			"name": "A.I. Limiter",
+			"className": "Recipe_AILimiter_C",
+			"alternate": false,
+			"time": 12,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_CopperSheet_C",
+					"amount": 5
+				},
+				{
+					"item": "Desc_HighSpeedWire_C",
+					"amount": 20
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": true,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CircuitBoardHighSpeed_C",
+					"amount": 1
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+		"Recipe_Alternate_AdheredIronPlate_C": {
+			"slug": "alternate-adhered-iron-plate",
+			"name": "Alternate: Adhered Iron Plate",
+			"className": "Recipe_Alternate_AdheredIronPlate_C",
+			"alternate": true,
+			"time": 16,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_IronPlate_C",
+					"amount": 3
+				},
+				{
+					"item": "Desc_Rubber_C",
+					"amount": 1
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_IronPlateReinforced_C",
+					"amount": 1
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+
+
+
+
+
+
+this may be the ultimate comparison of values:
+
+public static calculateProductAmountsPerMinute(building: IManufacturerSchema, recipe: IRecipeSchema, recipeProductAmount: number, overclock: number): number
+	{
+		const recipeTime = Formula.calculateBuildingRecipeProductionTime(recipe, building, overclock);
+		return (60 / (recipe.time * (recipeTime / recipe.time))) * recipeProductAmount;
+	}
