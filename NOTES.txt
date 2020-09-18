@@ -1,49 +1,30 @@
-"Recipe_AILimiter_C": {
-			"slug": "a-i-limiter",
-			"name": "A.I. Limiter",
-			"className": "Recipe_AILimiter_C",
-			"alternate": false,
-			"time": 12,
+this may be the ultimate comparison of values:
+
+public static calculateProductAmountsPerMinute(building: IManufacturerSchema, recipe: IRecipeSchema, recipeProductAmount: number, overclock: number): number
+	{
+		const recipeTime = Formula.calculateBuildingRecipeProductionTime(recipe, building, overclock);
+		return (60 / (recipe.time * (recipeTime / recipe.time))) * recipeProductAmount;
+	}
+
+
+
+Circuit-Board
+{
+  "Recipe_Alternate_CircuitBoard_1_C": {
+			"slug": "alternate-silicone-circuit-board",
+			"name": "Alternate: Silicone Circuit Board",
+			"className": "Recipe_Alternate_CircuitBoard_1_C",
+			"alternate": true,
+			"time": 24,
 			"manualTimeMultiplier": 1,
 			"ingredients": [
 				{
 					"item": "Desc_CopperSheet_C",
-					"amount": 5
+					"amount": 11
 				},
 				{
-					"item": "Desc_HighSpeedWire_C",
-					"amount": 20
-				}
-			],
-			"forBuilding": false,
-			"inMachine": true,
-			"inHand": true,
-			"inWorkshop": false,
-			"products": [
-				{
-					"item": "Desc_CircuitBoardHighSpeed_C",
-					"amount": 1
-				}
-			],
-			"producedIn": [
-				"Desc_AssemblerMk1_C"
-			]
-		},
-		"Recipe_Alternate_AdheredIronPlate_C": {
-			"slug": "alternate-adhered-iron-plate",
-			"name": "Alternate: Adhered Iron Plate",
-			"className": "Recipe_Alternate_AdheredIronPlate_C",
-			"alternate": true,
-			"time": 16,
-			"manualTimeMultiplier": 1,
-			"ingredients": [
-				{
-					"item": "Desc_IronPlate_C",
-					"amount": 3
-				},
-				{
-					"item": "Desc_Rubber_C",
-					"amount": 1
+					"item": "Desc_Silica_C",
+					"amount": 11
 				}
 			],
 			"forBuilding": false,
@@ -52,7 +33,69 @@
 			"inWorkshop": false,
 			"products": [
 				{
-					"item": "Desc_IronPlateReinforced_C",
+					"item": "Desc_CircuitBoard_C",
+					"amount": 5
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+    "Recipe_Alternate_CircuitBoard_2_C": {
+			"slug": "alternate-caterium-circuit-board",
+			"name": "Alternate: Caterium Circuit Board",
+			"className": "Recipe_Alternate_CircuitBoard_2_C",
+			"alternate": true,
+			"time": 48,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_Plastic_C",
+					"amount": 10
+				},
+				{
+					"item": "Desc_HighSpeedWire_C",
+					"amount": 30
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CircuitBoard_C",
+					"amount": 7
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+    Recipe_Alternate_ElectrodeCircuitBoard_C": {
+			"slug": "alternate-electrode-circuit-board",
+			"name": "Alternate: Electrode Circuit Board",
+			"className": "Recipe_Alternate_ElectrodeCircuitBoard_C",
+			"alternate": true,
+			"time": 12,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_Rubber_C",
+					"amount": 6
+				},
+				{
+					"item": "Desc_PetroleumCoke_C",
+					"amount": 9
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CircuitBoard_C",
 					"amount": 1
 				}
 			],
@@ -60,16 +103,197 @@
 				"Desc_AssemblerMk1_C"
 			]
 		},
+    "Recipe_CircuitBoard_C": {
+			"slug": "circuit-board",
+			"name": "Circuit Board",
+			"className": "Recipe_CircuitBoard_C",
+			"alternate": false,
+			"time": 8,
+			"manualTimeMultiplier": 1.5,
+			"ingredients": [
+				{
+					"item": "Desc_CopperSheet_C",
+					"amount": 2
+				},
+				{
+					"item": "Desc_Plastic_C",
+					"amount": 4
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": true,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CircuitBoard_C",
+					"amount": 1
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+}
 
 
+Copper-Sheet
+{
+  "Recipe_Alternate_SteamedCopperSheet_C": {
+			"slug": "alternate-steamed-copper-sheet",
+			"name": "Alternate: Steamed Copper Sheet",
+			"className": "Recipe_Alternate_SteamedCopperSheet_C",
+			"alternate": true,
+			"time": 8,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_CopperIngot_C",
+					"amount": 3
+				},
+				{
+					"item": "Desc_Water_C",
+					"amount": 3
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CopperSheet_C",
+					"amount": 3
+				}
+			],
+			"producedIn": [
+				"Desc_OilRefinery_C"
+			]
+		},
+  "Recipe_CopperSheet_C": {
+			"slug": "copper-sheet",
+			"name": "Copper Sheet",
+			"className": "Recipe_CopperSheet_C",
+			"alternate": false,
+			"time": 6,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_CopperIngot_C",
+					"amount": 2
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": true,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_CopperSheet_C",
+					"amount": 1
+				}
+			],
+			"producedIn": [
+				"Desc_ConstructorMk1_C"
+			]
+		},
+}
+
+Silica
+{
+  "Recipe_Alternate_Silica_C": {
+			"slug": "alternate-cheap-silica",
+			"name": "Alternate: Cheap Silica",
+			"className": "Recipe_Alternate_Silica_C",
+			"alternate": true,
+			"time": 16,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_RawQuartz_C",
+					"amount": 3
+				},
+				{
+					"item": "Desc_Stone_C",
+					"amount": 5
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_Silica_C",
+					"amount": 7
+				}
+			],
+			"producedIn": [
+				"Desc_AssemblerMk1_C"
+			]
+		},
+  "Recipe_AluminaSolution_C": {
+			"slug": "alumina-solution",
+			"name": "Alumina Solution",
+			"className": "Recipe_AluminaSolution_C",
+			"alternate": false,
+			"time": 6,
+			"manualTimeMultiplier": 1,
+			"ingredients": [
+				{
+					"item": "Desc_OreBauxite_C",
+					"amount": 7
+				},
+				{
+					"item": "Desc_Water_C",
+					"amount": 10
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": false,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_AluminaSolution_C",
+					"amount": 8
+				},
+				{
+					"item": "Desc_Silica_C",
+					"amount": 2
+				}
+			],
+			"producedIn": [
+				"Desc_OilRefinery_C"
+			]
+		},
+  "Recipe_Silica_C": {
+			"slug": "silica",
+			"name": "Silica",
+			"className": "Recipe_Silica_C",
+			"alternate": false,
+			"time": 8,
+			"manualTimeMultiplier": 2,
+			"ingredients": [
+				{
+					"item": "Desc_RawQuartz_C",
+					"amount": 3
+				}
+			],
+			"forBuilding": false,
+			"inMachine": true,
+			"inHand": true,
+			"inWorkshop": false,
+			"products": [
+				{
+					"item": "Desc_Silica_C",
+					"amount": 5
+				}
+			],
+			"producedIn": [
+				"Desc_ConstructorMk1_C"
+			]
+		},
+}
 
 
-
-
-this may be the ultimate comparison of values:
-
-public static calculateProductAmountsPerMinute(building: IManufacturerSchema, recipe: IRecipeSchema, recipeProductAmount: number, overclock: number): number
-	{
-		const recipeTime = Formula.calculateBuildingRecipeProductionTime(recipe, building, overclock);
-		return (60 / (recipe.time * (recipeTime / recipe.time))) * recipeProductAmount;
-	}
