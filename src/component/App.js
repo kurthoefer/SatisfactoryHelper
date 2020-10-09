@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import Query from "./Query.js"
 
 class App extends Component {
   render() {
     return (
-      // resizeable background
-      <div className='Intro'>Hello World</div>
+      <div className='Intro'>
+        <Query />
+      </div>
     );
   }
 }
