@@ -1,5 +1,5 @@
 export const inputMaterials = {
-  "Desc_OreIron_C": 
+  "Desc_OreIron_C": ironOre
   "Desc_OreCopper_C":
   "Desc_Coal_C":
   "Desc_Water_C":
@@ -13,5 +13,5 @@ export const inputMaterials = {
 }
 
 export const outputProducts = {
-  
+
 }
