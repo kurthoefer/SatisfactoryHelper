@@ -5,7 +5,7 @@ import Tile from './Tile'
 
 import styled from 'styled-components';
 
-const InputContainer = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -13,12 +13,15 @@ const InputContainer = styled.div`
 
 
 function InputParam() {
-  // const [ modalIsOpen, setModalIsOpen] = useState(false)
+  const [ modalIsOpen, setModalIsOpen] = useState(false)
 
   return (
-    <InputContainer>
-      <Tile />
-    </InputContainer>
+    <div>
+      <button onClick={ () => setModalIsOpen(true) }>Open</button>
+      <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+          <h2>TITLE</h2>
+      </ReactModal>
+    </div>
   )
 }
 
