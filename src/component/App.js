@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import Query from "./Query.js"
 
+import styled from 'styled-components';
+
+const Container = styled.div``
+
 class App extends Component {
   render() {
     return (
-      <div className='Intro'>
+      <Container>
         <Query />
-      </div>
+      </Container>
     );
   }
 }

@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 import ReactModal from 'react-modal';
 
-import Tile from './Tile'
-
 import styled from 'styled-components';
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+const ItemTile = styled.div`
+  margin: 5px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: ${(props) => (props.purity ? props.purity : 'grey')};
+  /* background-image: ${(props) => (props.ingredient ? )} */
 `
 
+// const 
 
-function InputParam() {
+
+function Tile() {
   const [ modalIsOpen, setModalIsOpen] = useState(false)
 
   return (
-    <div>
-      <button onClick={ () => setModalIsOpen(true) }>Open</button>
+    <ItemTile onClick={() => setModalIsOpen(true)}>
+      {/* <ItemTile onClick={() => setModalIsOpen(true)}>
+        Open
+      </ItemTile> */}
       <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <h2>TITLE</h2>
       </ReactModal>
-    </div>
+    </ItemTile>
   )
 }
 
-export default InputParam;
+export default Tile;
 

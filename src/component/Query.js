@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ReactModal from 'react-modal';
+// import ReactModal from 'react-modal';
 
 import InputParam from './InputParam';
-import MKSpeed from './MKSpeed';
+// import MKSpeed from './MKSpeed';
 import OutputParam from './OutputParam';
 
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   grid-template-areas: 'input mks output';
-
+  height: 40vw;
 `
 
 function Query() {
@@ -19,7 +19,7 @@ function Query() {
   return (
     <Container>
       <InputParam />
-      <MKSpeed />
+      {/* <MKSpeed /> */}
       <OutputParam />
     </Container>
   );
