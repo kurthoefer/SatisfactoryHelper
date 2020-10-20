@@ -18,6 +18,7 @@ function InputParam() {
   return (
     <InputContainer>
       <Tile />
+      <Tile />
     </InputContainer>
   )
 }

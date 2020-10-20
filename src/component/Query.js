@@ -14,17 +14,31 @@ const Container = styled.div`
   height: 40vw;
 `
 
-function Query() {
-  
-  return (
-    <Container>
-      <InputParam />
-      {/* <MKSpeed /> */}
-      <OutputParam />
-    </Container>
-  );
+class Query extends Component {
 
+  render() {
+    return (
+      <Container>
+       <InputParam />
+        {/* <MKSpeed /> */}
+        {/* <OutputParam /> */}
+      </Container>
+    );
+  }
 }
+
+
+// function Query() {
+  
+//   return (
+//     <Container>
+//       <InputParam />
+//       {/* <MKSpeed /> */}
+//       {/* <OutputParam /> */}
+//     </Container>
+//   );
+
+// }
 
 export default Query;
 
