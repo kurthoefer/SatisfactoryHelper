@@ -1,7 +1,24 @@
-const { createContext } = require("react");
+import { createContext, useContext, useReducer } from 'react';
 
-import react, { createContext } from 'react';
+const QueryContext = createContext()
+const QueryUpdateContext = createContext()
 
-export default createContext({
-  //state
-})
+export function useQuery() {
+  return useContext(QueryContext)
+}
+
+export function useUpdateQuery() {
+  return useContext(QueryUpdateContext)
+}
+
+
+
+export function QueryProvider({ children }) {
+
+
+  return (
+    <QueryContext.Provider value={}>
+
+    </QueryContext.Provider>
+  )
+}
