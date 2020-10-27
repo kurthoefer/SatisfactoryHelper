@@ -47,6 +47,11 @@ function updateResources(resources, action) {
           return {...resource, quantity: resource.quantity - 1}
         }
       })
+    case ACTIONS.REMOVE_RESOURCE:
+      return resources.filter(resource => resource.id !== payload.id)
+    default:
+      console.log('foreign request in updateResources reducer')
+      return resources
   }
 }
 
