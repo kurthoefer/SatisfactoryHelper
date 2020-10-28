@@ -1,5 +1,5 @@
 // import data from './data/data.json'
-const data = require('./data/data.json')
+const data = require('./data/data.json') //fix this
 
 // const parsed = JSON.parse(data)
 // const recipes = parsed.recipes

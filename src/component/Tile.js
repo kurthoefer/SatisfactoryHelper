@@ -4,8 +4,8 @@ import ReactModal from 'react-modal';
 import styled from 'styled-components';
 
 const purity = (props) => {
-  if (props.purity === 'pure') return 'purple';
-  if (props.purity === 'normal') return 'yellow';
+  if (props.purity === 3) return 'purple';
+  if (props.purity === 2) return 'yellow';
   return 'grey';
 }
 
@@ -82,26 +82,37 @@ const ItemQuantityButtonInc = styled.button`
 
 
 function Tile(props) {
-  const [ modalIsOpen, setModalIsOpen] = useState(false)
+  if (!props.empty) {
+    return (
+      <ItemTile>
+        <ItemName>
+          {props.name}
+        </ItemName>
+        <ItemPurity>
+          Purity
+        </ItemPurity>
+        <ItemQuantity>
+          {props.quantity}
+        </ItemQuantity>
+        <ItemQuantityButtonDec>
+          -
+        </ItemQuantityButtonDec>
+        <ItemQuantityButtonInc>
+          +
+        </ItemQuantityButtonInc>
+      </ItemTile>
+    )
+  } else {
+    const [ modalIsOpen, setModalIsOpen] = useState(false)
+    return (
+      <ItemTile onClick={() => setModalIsOpen(true)}>
+        <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+            <h2>TITLE</h2>
+        </ReactModal>
+      </ItemTile>
+    )
+  }
 
-  return (
-    <ItemTile>
-      <ItemName>
-        Name
-      </ItemName>
-      <ItemPurity>
-        Puritypurity
-      </ItemPurity>
-      <ItemQuantity>
-        2
-      </ItemQuantity>
-      <ItemQuantityButtonDec>-</ItemQuantityButtonDec>
-      <ItemQuantityButtonInc>+</ItemQuantityButtonInc>
-      {/* <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <h2>TITLE</h2>
-      </ReactModal> */}
-    </ItemTile>
-  )
 
   if (props.ingredient) {
     return (

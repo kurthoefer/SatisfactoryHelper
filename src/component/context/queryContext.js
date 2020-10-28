@@ -15,6 +15,7 @@ export function useUpdateQuery() {
 // function someReducer(state, action) {
 //   return {alteredState}
 // }
+
 function newResource(name, purity, quantity) {
   return {
     'name': name,
@@ -61,7 +62,7 @@ export function QueryProvider({ children }) {
   const [resourcesState, dispatchResources] = useReducer(updateResources, [])
 
   return (
-    <QueryContext.Provider value={}>
+    <QueryContext.Provider value={ {'resourcesState': resourcesState, 'dispatchResources': dispatchResources } }>
       { children }
     </QueryContext.Provider>
   )
