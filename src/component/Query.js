@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // import ReactModal from 'react-modal';
-import _merge from 'lodash.merge';
-import inputMaterials from '../data/dataMap'
+// import _merge from 'lodash.merge';
+// import inputMaterials from '../data/dataMap'
 
 import InputParam from './InputParam';
 // import MKSpeed from './MKSpeed';
-import OutputParam from './OutputParam';
+// import OutputParam from './OutputParam';
 
 import styled from 'styled-components';
 

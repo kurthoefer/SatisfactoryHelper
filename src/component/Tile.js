@@ -1,42 +1,10 @@
 import React, { useState } from "react";
 import ReactModal from 'react-modal';
 
+import ACTIONS from "./context/ACTIONS";
+import { inputMaterials } from '../data/dataMap'
+
 import styled from 'styled-components';
-
-const purity = (props) => {
-  if (props.purity === 3) return 'purple';
-  if (props.purity === 2) return 'yellow';
-  return 'grey';
-}
-
-const ItemTile = styled.div`
-  margin: 5px;
-  border-style: solid;
-  border-radius: 10px;
-  border-width: 2px;
-  border-color: ${(props) => (props.purity ? props.purity : 'grey')};
-  background-image: url(${(props) => (props.ingredientImg ? props.ingredientImg : '/assets/misc/plus.png')});
-  background-position: center;
-  background-size: cover;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    '. . itemName . .'
-    '. . itemPurity . .'
-    '. . . . .'
-    '. . . . .'
-    'decQuant . itemQuant . incQuant';
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    '. . itemName . .'
-    '. . itemPurity . .'
-    '. . . . .'
-    '. . . . .'
-    'decQuant . itemQuant . incQuant'; */
-`
 
 const ItemName = styled.div`
   grid-area: itemName;
@@ -80,57 +48,117 @@ const ItemQuantityButtonInc = styled.button`
 
 // const ItemQuantityButtonRight 
 
+const purity = (purity) => {
+  if (purity === 3) return 'purple';
+  if (purity === 2) return 'yellow';
+  return 'grey';
+}
+
+const slugToImage = (resourceSlug) => {
+  for (slug in inputMaterials) {
+    if (slug === resourceSlug) return inputMaterials.slug.icon
+  }
+  console.log('incomplete slugToImage in Tile.js')
+}
 
 function Tile(props) {
+  console.log('props in Tile: ', props)
+  // console.log('props.name (top of Tile function): ', props.name)
+
+  const ItemTile = styled.div`
+    margin: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: ${() => (props.purity ? purity(props.purity) : 'grey')};
+    background-image: url(${() => (props.slug ? `/assets/parts/${slugToImage(props.slug)}.png` : '/assets/misc/plus.png')});
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      '. . itemName . .'
+      '. . itemPurity . .'
+      '. . . . .'
+      '. . . . .'
+      'decQuant . itemQuant . incQuant';
+  `
+
   if (!props.empty) {
+    // console.log('thethis props:', props)
     return (
       <ItemTile>
         <ItemName>
           {props.name}
         </ItemName>
-        <ItemPurity>
+        <ItemPurity onClick={() => props.dispatchResources({
+          type: ACTIONS.TOGGLE_PURITY,
+          payload: {
+            id: props.id
+          }
+        })}>
           Purity
         </ItemPurity>
         <ItemQuantity>
           {props.quantity}
         </ItemQuantity>
-        <ItemQuantityButtonDec>
+        <ItemQuantityButtonDec onClick={() => props.dispatchResources({
+          type: ACTIONS.DECREMENT_QUANTITY,
+          payload: {
+            id: props.id
+          }
+        })}>
           -
         </ItemQuantityButtonDec>
-        <ItemQuantityButtonInc>
+        <ItemQuantityButtonInc onClick={() => props.dispatchResources({
+          type: ACTIONS.INCREMENT_QUANTITY,
+          payload: {
+            id: props.id
+          }
+        })}>
           +
         </ItemQuantityButtonInc>
       </ItemTile>
     )
+  } else if (props.inModal) {
+    <ItemTile>
+      <ItemName>
+        {props.name}
+      </ItemName>
+    </ItemTile>
   } else {
     const [ modalIsOpen, setModalIsOpen] = useState(false)
     return (
       <ItemTile onClick={() => setModalIsOpen(true)}>
-        <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <ReactModal inModal={true}
+          isOpen={modalIsOpen} 
+          onRequestClose={() => setModalIsOpen(false)}
+          // onAfterOpen={}
+          contentLabel='select input'
+          parentSelector={() => document.querySelector("#inputs")}
+        >
             <h2>TITLE</h2>
         </ReactModal>
       </ItemTile>
     )
-  }
-
-
-  if (props.ingredient) {
-    return (
-      <ItemTile>
-        {/* <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            <h2>TITLE</h2>
-        </ReactModal> */}
-      </ItemTile>
-    )
-  } else {
-    return (
-      <ItemTile className={'addTile_Tile'} onClick={() => setModalIsOpen(true)}>
-        <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-            <h2>TITLE</h2>
-        </ReactModal>
-      </ItemTile>
-    )
-  }
+  } 
+  // else {
+  //   // console.log('this')
+  //   return (
+  //     <ItemTile onClick={() => props.dispatchResources({
+  //       type: ACTIONS.ADD_RESOURCE,
+  //       payload: {
+  //         name: 'Bauxite',
+  //         purity: 3,
+  //         quantity: 2,
+  //       }
+  //     })}
+  //     />
+  //   )
+  // }
 
 }
 

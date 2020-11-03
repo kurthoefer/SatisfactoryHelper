@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-// import ReactModal from 'react-modal';
+import React from "react"
+import { useQuery } from './context/QueryContext'
 
 import Tile from './Tile'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const InputContainer = styled.div`
   display: grid;
@@ -12,21 +12,24 @@ const InputContainer = styled.div`
 `
 
 function InputParam() {
-  const queryContext = useContext(QueryContext)
-  // const [ modalIsOpen, setModalIsOpen] = useState(false)
-
+  const queryContext = useQuery()
+  console.log('var queryContext: ', queryContext)
   return (
-    <InputContainer>
-      {queryContext.resources.map(resource => {
-        <Tile 
-          key={resource.id}
-          name={resource.name}
-          quantity={resource.quantity}
-          purity={resource.purity}
-          dispatchResources={queryContext.dispatchResources}
-        />
+    <InputContainer >
+      {queryContext.resourcesState.map(resource => {
+        return (
+          <Tile 
+            dispatchResources={queryContext.dispatchResources}
+            key={resource.id}
+            id={resource.id}
+            name={resource.name}
+            quantity={resource.quantity}
+            purity={resource.purity}
+            // dispatchResources={queryContext.dispatchResources}
+          />
+        )
       })}
-      <Tile empty={true} />
+      <Tile empty={true} dispatchResources={queryContext.dispatchResources} />
     </InputContainer>
   )
 }
